@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Multiple Linear Regression Results</title>
+
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                background-color: #f6f6f6;
+                margin: 0;
+                padding: 10px;
+            }
+    
+            h1 {
+                font-family: 'Georgia', serif;
+                color: #333333;
+            }
+    
+            p, li {
+                font-size: 16px;
+                color: #555555;
+            }
+    
+            div {
+                background-color: #ffffff;
+                border-radius: 8px;
+                padding: 20px;
+                margin: 20px 0;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+    
+            li {
+                margin-top: 5px;
+            }
+            
+            iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            }
+    
+        </style>
+    </head>
+<body>
+
+<div>
+    <h1>Results from baseline model training - Multiple Logistic Regression</h1>
+    <p>
+        <li>'Accuracy': 0.7926493874489541</li>
+        <li>'Precision': 0.5988463555322496</li> 
+        <li>'Recall': 0.39860383944153577</li> 
+        <li>'F1-Score': 0.4786253143336127</li>
+        <li>'Confusion Matrix': [[8369, 765], [1723, 1142]]}</li>
+    </p>
+
+    <p>
+    Confusion Matrix:
+
+        <li>True Negative (TN): 8369</li>
+        <li>False Positive (FP): 765</li>
+        <li>False Negative (FN): 1723</li>
+        <li>True Positive (TP): 1142</li>
+    </p>
+    <p>
+    Accuracy of 79.26%, indicates that the model is generally good at predicting both classes, but we need to dive deeper into other metrics for a more nuanced view.
+    </p>
+    Precision of 59.88%, suggests that when the model predicts a positive instance, it is correct about 60% of the time. This implies there is a significant number of false positives.
+    <p>
+    Recall of 39.86%, indicates that the model is only able to identify about 40% of the actual positive instances. This means a considerable number of positive instances are being missed (false negatives).
+    </p>
+    <p>
+    F1-Score of 47.86%, which balances the precision and recall, indicates that the model's performance is relatively moderate. This is often a better metric for imbalanced datasets.
+    </p>
+    Confusion Matrix shows us:
+
+        <li>A large number of true negatives (8369), meaning the model is very good at identifying the negative class.</li>
+        <li>A concerning number of false negatives (1723), which means the model is missing a significant number of positive instances.</li>
+        <li>A moderate number of true positives (1142) and false positives (765).</li>
+
+    Conclusion
+
+        <li>The model has a decent overall accuracy.</li>
+        <li>The precision is moderate but indicates a trade-off, leaning towards more false positives.</li>
+        <li>The recall is relatively low, suggesting the model is missing a considerable number of actual positive cases.</li>
+        <li>The F1-Score indicates moderate overall performance, suggesting room for improvement.</li>
+    </p>
+
+    <p>
+    To consider focusing on improving recall without sacrificing precision too much:
+
+        <li>Rebalancing the dataset if it is imbalanced.</li>
+        <li>Trying different models or hyperparameter tuning.</li>
+        <li>Using techniques such as oversampling, undersampling, or synthetic data generation for the minority class.</li>
+
+    </p>
+</div>
+
+<div>
+    <h1>Results from SMOTE model training - Multiple Logistic Regression</h1>
+    <p>
+        <li>'Accuracy': 0.832931902780819</li>
+        <li>'Precision': 0.8058740696037014</li> 
+        <li>'Recall': 0.877162250930589</li> 
+        <li>'F1-Score': 0.8400083875026211</li>
+        <li>'Confusion Matrix': [[7204, 1930], [1122, 8012]]}</li>
+    </p>
+
+    <p>
+    Confusion Matrix:
+
+        <li>True Negative (TN): 7204</li>
+        <li>False Positive (FP): 1930</li>
+        <li>False Negative (FN): 1122</li>
+        <li>True Positive (TP): 8012</li>
+    </p>
+    <p>
+    Accuracy of 83.29%,  indicates that the model correctly predicts the class of 83.29% of the instances in the training data.
+    </p>
+    Precision of 80.59%, suggests that when the model predicts a positive instance, it is correct about 80% of the time.
+    <p>
+    Recall of 87.72%, indicates that the model is able to identify about 87.72% of the actual positive instances. 
+    </p>
+    <p>
+    F1-Score of 84.00%, which balances the precision and recall, suggesting the model handles both false positives and false negatives fairly well. This is often a better metric for imbalanced datasets.
+    </p>
+    Confusion Matrix shows us:
+
+        <li>The TP and TN values are high, indicating many correct predictions.</li>
+        <li>The FP and FN values are relatively lower compared to TP and TN, indicating fewer incorrect predictions.</li>
+        
+
+    Conclusion
+
+        <li>Overall, the model with SMOTE applied shows good performance based on its accuracy, precision, recall, and F1-score.</li>
+        <li> The confusion matrix further provides a clear picture of the correct and incorrect classifications.</li>
+
+    </p>
+
+</div>
+
+<div>
+    <h1> Baseline Training Result (ACTUAL)</h1>
+
+    <p>
+        <li>'Accuracy': 0.7873989499124927</li>
+        <li>'Precision':0.6068027210884354</li> 
+        <li>'Recall': 0.3113438045375218</li> 
+        <li>'F1-Score': 0.41153402537485584</li>
+        <li>'Confusion Matrix': [[8556, 578], [1973, 892]]</li>
+    </p>
+
+</div>
+
+<div>
+    <h1> SMOTE Training Result (ACTUAL)</h1>
+
+    <p>
+        <li>'Accuracy': 0.7789029997810378</li>
+        <li>'Precision': 0.7628185288352419</li> 
+        <li>'Recall': 0.809502955988614</li> 
+        <li>'F1-Score': 0.7854676793966112</li>
+        <li>'Confusion Matrix': [[6835, 2299], [1740, 7394]]</li>
+    </p>
+
+
+</div>
+
+<div>
+    <h1> Baseline Model Testing Result </h1>
+
+    <p>
+        <li>'Accuracy': 0.775</li>
+        <li>'Precision': 0.5701357466063348</li> 
+        <li>'Recall': 0.17847025495750707</li> 
+        <li>'F1-Score': 0.27184466019417475</li>
+        <li>'Confusion Matrix': [[2199, 95], [580, 126]]</li>
+    </p>
+
+</div>
+
+<div>
+    <h1> SMOTE Model Testing Result </h1>
+
+    <p>
+        <li>'Accuracy': 0.7633333333333333</li>
+        <li>'Precision': 0.49821109123434704</li> 
+        <li>'Recall': 0.7889518413597734</li> 
+        <li>'F1-Score': 0.6107456140350878</li>
+        <li>'Confusion Matrix': [[1733, 561], [149, 557]]</li>
+    </p>
+</div>
+
+<div>
+    <h1>Testing Results Plot</h1>
+    <!-- Embed the Plotly plot using an iframe -->
+    <iframe src="file:///C:/Users/MJR0X3R/DataScienceProjects/imbalanced_project/reports/figures/testing/temp-plot.html"></iframe>
+</div>
+
+</body>
+</html>

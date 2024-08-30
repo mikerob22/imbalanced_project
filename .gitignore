@@ -1,0 +1,82 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+.Python
+*.pem
+*.whl
+*.egg-info/
+dist/
+build/
+
+# Poetry specific
+poetry.lock
+
+# Jupyter notebooks
+.ipynb_checkpoints
+
+# VSCode settings and workspace file
+.vscode/
+*.code-workspace
+
+# Environment variables
+.env
+.env.*
+
+# Virtualenv
+venv/
+.env/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# MacOS files
+.DS_Store
+
+# Python specific
+*.pyo
+*.pyc
+*.pyd
+
+# Logs
+*.log
+*.output
+*.error
+
+# Test Output
+htmlcov/
+.tox/
+.nox/
+.coverage
+.cache
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+*.coverage
+.hypothesis/
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Profiling data
+*.prof
+*.lprof
+
+# Pylint
+pylint.log
+
+# Ignore cookiecutter template directory itself, if not part of the project
+{{cookiecutter.project_slug}}/
+
+# Notebook checkpoints
+.ipynb_checkpoints/
+
+# Exported Jupyter Notebooks
+exported-notebooks/

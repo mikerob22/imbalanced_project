@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "imbalanced_project"
+version = "0.1.0"
+description = "This project is a project to learn how to handle imbalanced data and learn how to use poetry and a cookiecutter datascience template."
+authors = ["Michael Roberts <mikey.rob2222gmail.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<4.0"
+numpy = "^2.1.0"
+pandas = "^2.2.2"
+scikit-learn = "^1.5.1"
+matplotlib = "^3.9.2"
+seaborn = "^0.13.2"
+jupyter = "^1.0.0"
+ipykernel = "^6.29.5"
+imblearn = "^0.0"
+joblib = "^1.4.2"
+plotly = "^5.24.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
