@@ -3,6 +3,7 @@ import numpy as np
 from src.features.feature_engineering import feature_engineering
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.model_selection import train_test_split
+import joblib
 
 
 
@@ -45,8 +46,7 @@ def load_and_split_data(filepath):
     return train_data, train_labels, test_data, test_labels
 
 
-def preprocess_data(data):
-    # Implement preprocessing steps specific to baseline model
+def preprocess_data(data, is_training):
 
     ### SEPARATE BINARY FEATURES ALREADY ENCODED ###
     binary_features = ['Work_accident', 'promotion_last_5years']
@@ -58,8 +58,13 @@ def preprocess_data(data):
     categorical_features = data_non_binary.select_dtypes(exclude=np.number).columns
     data_categotical = data_non_binary[categorical_features]
 
-    cat_encoder = OneHotEncoder(sparse_output=False)
-    cat_onehot = cat_encoder.fit_transform(data_categotical)
+    if is_training:
+        cat_encoder = OneHotEncoder(sparse_output=False)
+        cat_onehot = cat_encoder.fit_transform(data_categotical)
+        joblib.dump(cat_encoder, 'src/data/serialized/onehot_encoder.pkl')
+    else:
+        cat_encoder = joblib.load('src/data/serialized/onehot_encoder.pkl')
+        cat_onehot = cat_encoder.transform(data_categotical)
     
     categorical_feature_names = cat_encoder.get_feature_names_out(categorical_features)
 
@@ -71,8 +76,13 @@ def preprocess_data(data):
     numerical_features = feature_engineered.select_dtypes(include=np.number).columns
     data_numerical = feature_engineered[numerical_features]
 
-    scaler = StandardScaler()
-    data_scaled = scaler.fit_transform(data_numerical)
+    if is_training:
+        scaler = StandardScaler()
+        data_scaled = scaler.fit_transform(data_numerical)
+        joblib.dump(scaler, 'src/data/serialized/scaler.pkl')
+    else:
+        scaler = joblib.load('src/data/serialized/scaler.pkl')
+        data_scaled = scaler.transform(data_numerical)
 
 
     ### Combine Categorical and Numerical Features ###
@@ -88,8 +98,8 @@ def preprocess_data(data):
 
 if __name__ == "__main__":
     train_data, train_labels, test_data, test_labels = load_and_split_data('data/raw/turnover.csv')
-    train_data_processed, train_features_processed = preprocess_data(train_data)
-    test_data_processed, test_features_processed = preprocess_data(test_data)
+    train_data_processed, train_features_processed = preprocess_data(train_data, is_training=True)
+    test_data_processed, test_features_processed = preprocess_data(test_data, is_training=False)
     train_data_processed.to_csv('data/processed/train_data_processed.csv')
     train_features_processed.to_csv('data/processed/train_features_processed.csv', index=False)
     test_data_processed.to_csv('data/processed/test_data_processed.csv')

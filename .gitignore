@@ -21,6 +21,9 @@ poetry.lock
 .vscode/
 *.code-workspace
 
+# serialized files
+.pkl
+
 # Environment variables
 .env
 .env.*
